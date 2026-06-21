@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey Beautiful ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,sans-serif;background:linear-gradient(135deg,#ffd6e7,#f7e8ff);min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hearts{position:fixed;inset:0;pointer-events:none}.heart{position:absolute;animation:float 8s linear infinite;font-size:20px;opacity:.5}
+@keyframes float{from{transform:translateY(110vh)}to{transform:translateY(-10vh)}}
+.card{width:min(92%,420px);background:rgba(255,255,255,.75);backdrop-filter:blur(10px);padding:24px;border-radius:24px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.15)}
+.hidden{display:none}button{border:none;border-radius:999px;padding:12px 18px;cursor:pointer}
+.primary{background:#ff4f8b;color:#fff}.secondary{background:#666;color:#fff}
+select,input{width:100%;padding:12px;border-radius:12px;border:1px solid #ddd}
+.fade{animation:fade .5s}@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}
+}
+.small{color:#666}
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+<div class="card">
+<div id="s1" class="fade">
+<h1>Hey Beautiful ❤️</h1>
+<p>I made something special just for you ✨</p>
+<button class="primary" onclick="show(2)">Open Surprise</button>
+</div>
+
+<div id="s2" class="hidden fade">
+<h2>Will you go on a date with me? 🥺❤️</h2>
+<p class="small" id="msg"></p>
+<button class="primary" onclick="show(3)">YES 😍</button>
+<button class="secondary" id="noBtn">NO 🙈</button>
+</div>
+
+<div id="s3" class="hidden fade">
+<h2>WAIT... YOU ACTUALLY SAID YES? 😭❤️</h2>
+<p>I don't know where this will lead, but seeing you say 'YES' is already my favorite part of today. ❤️</p>
+<button class="primary" onclick="show(4)">Continue ✨</button>
+</div>
+
+<div id="s4" class="hidden fade">
+<h2>What should we eat together? 🍕</h2>
+<select id="food">
+<option>Pizza 🍕</option><option>Burger 🍔</option><option>Pasta 🍝</option>
+<option>Sushi 🍣</option><option>Ice Cream 🍦</option>
+</select><br><br>
+<button class="primary" onclick="show(5)">Next</button>
+</div>
+
+<div id="s5" class="hidden fade">
+<h2>What should we do together? ✨</h2>
+<select id="activity">
+<option>Movie 🎬</option><option>Coffee ☕</option>
+<option>Long Drive 🚗</option><option>Evening Walk 🌙</option>
+<option>Shopping 🛍️</option>
+</select><br><br>
+<button class="primary" onclick="show(6)">Next</button>
+</div>
+
+<div id="s6" class="hidden fade">
+<h2>Choose our vibe ❤️</h2>
+<select id="vibe">
+<option>Romantic ❤️</option><option>Cute 🥺</option>
+<option>Fun 😆</option><option>Cozy ☕</option>
+</select><br><br>
+<button class="primary" onclick="show(7)">Next</button>
+</div>
+
+<div id="s7" class="hidden fade">
+<h2>When should we meet? 📅</h2>
+<input type="date" id="date"><br><br>
+<button class="primary" onclick="sendWA()">Submit ❤️</button>
+</div>
+</div>
+
+<script>
+for(let i=0;i<20;i++){let h=document.createElement('div');h.className='heart';h.innerHTML='❤️';h.style.left=Math.random()*100+'%';h.style.animationDelay=Math.random()*8+'s';document.getElementById('hearts').appendChild(h);}
+function show(n){document.querySelectorAll('.card>div').forEach(x=>x.classList.add('hidden'));document.getElementById('s'+n).classList.remove('hidden');}
+const msgs=['Are you sure? 😭','Think again 🥺','Please ❤️','Give me one chance ✨'];
+const no=document.getElementById('noBtn'); let c=0;
+no.onmouseover=()=>{c++;document.getElementById('msg').innerText=msgs[c%msgs.length];no.style.position='absolute';no.style.left=(Math.random()*250)+'px';no.style.top=(Math.random()*250)+'px';};
+function sendWA(){
+ const text=`Hello ❤️%0A%0ADate Proposal Response%0A%0AFood: ${document.getElementById('food').value}%0AActivity: ${document.getElementById('activity').value}%0AVibe: ${document.getElementById('vibe').value}%0ADate: ${document.getElementById('date').value}`;
+ location.href='https://wa.me/918802329692?text='+text;
+}
+</script>
+</body></html>
