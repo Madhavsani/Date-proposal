@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Proposal ❤️</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:linear-gradient(135deg,#ffd1dc,#ffe6f0,#f3d9ff);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+.card{background:rgba(255,255,255,.8);backdrop-filter:blur(8px);padding:25px;border-radius:20px;max-width:420px;width:100%;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+button{border:none;padding:12px 18px;border-radius:999px;cursor:pointer;margin:8px}
+.yes{background:#ff4f8b;color:#fff}
+.no{background:#666;color:#fff;position:relative}
+.option{display:block;width:100%;background:#fff}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="card">
+<div id="s1">
+<h1>Hey Beautiful ❤️</h1>
+<p>I made something special just for you ✨</p>
+<button class="yes" onclick="next(2)">Open Surprise</button>
+</div>
+
+<div id="s2" class="hidden">
+<h2>Will you go on a date with me? 🥺❤️</h2>
+<button class="yes" onclick="next(3)">YES 😍</button>
+<button id="noBtn" class="no">NO 🙈</button>
+</div>
+
+<div id="s3" class="hidden">
+<h2>WAIT YOU ACTUALLY SAID YES?? 😭❤️</h2>
+<p>You just made my day ✨</p>
+<button class="yes" onclick="next(4)">Continue</button>
+</div>
+
+<div id="s4" class="hidden">
+<h2>What should we eat together? 🍕</h2>
+<select id="food">
+<option>Pizza 🍕</option>
+<option>Burger 🍔</option>
+<option>Sushi 🍣</option>
+<option>Pasta 🍝</option>
+<option>Ice Cream 🍦</option>
+</select><br><br>
+<button class="yes" onclick="next(5)">Next</button>
+</div>
+
+<div id="s5" class="hidden">
+<h2>Choose a Date 📅</h2>
+<input type="date" id="date"><br><br>
+<button class="yes" onclick="next(6)">Next</button>
+</div>
+
+<div id="s6" class="hidden">
+<h2>What should we do? ✨</h2>
+<select id="activity">
+<option>Movie 🎬</option>
+<option>Coffee ☕</option>
+<option>Long Drive 🚗</option>
+<option>Shopping 🛍️</option>
+<option>Evening Walk 🌙</option>
+</select><br><br>
+<button class="yes" onclick="showSummary()">Next</button>
+</div>
+
+<div id="s7" class="hidden">
+<h2>Our Perfect Date ❤️</h2>
+<p id="summary"></p>
+<button class="yes" onclick="sendWhatsApp()">Submit</button>
+</div>
+</div>
+
+<script>
+const noBtn=document.getElementById('noBtn');
+noBtn.addEventListener('mouseover',()=>{
+ noBtn.style.position='absolute';
+ noBtn.style.left=Math.random()*200+'px';
+ noBtn.style.top=Math.random()*200+'px';
+});
+
+function next(n){
+ document.querySelectorAll('.card > div').forEach(d=>d.classList.add('hidden'));
+ document.getElementById('s'+n).classList.remove('hidden');
+}
+
+function showSummary(){
+ const food=document.getElementById('food').value;
+ const date=document.getElementById('date').value;
+ const activity=document.getElementById('activity').value;
+ document.getElementById('summary').innerHTML=
+ 'Food: '+food+'<br>Date: '+date+'<br>Activity: '+activity;
+ next(7);
+}
+
+function sendWhatsApp(){
+ const food=document.getElementById('food').value;
+ const date=document.getElementById('date').value;
+ const activity=document.getElementById('activity').value;
+ const msg=`Hello ❤️
+
+Date Proposal Response
+
+Food: ${food}
+Date: ${date}
+Activity: ${activity}`;
+ window.open('https://wa.me/918802329692?text='+encodeURIComponent(msg),'_blank');
+}
+</script>
+</body>
+</html>
